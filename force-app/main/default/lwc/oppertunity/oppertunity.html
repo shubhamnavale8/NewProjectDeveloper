@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Oppertunity Records" icon-name="standard:opportunity"  padding="around-small" >
+        <lightning-datatable if:true={oppertunityObject.data}
+            key-field="id"
+            show-row-number-column
+            hide-checkbox-column
+            data={oppertunityObject.data}
+            columns={columns}>
+        </lightning-datatable>
+    </lightning-card>     
+</template>

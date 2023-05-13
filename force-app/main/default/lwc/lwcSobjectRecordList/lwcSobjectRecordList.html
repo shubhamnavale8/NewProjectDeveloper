@@ -1,0 +1,42 @@
+<template>
+    <lightning-card class="slds-">
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_8-of-12  ">
+                    <div class="slds-card slds-p-around_small">
+                        <lightning-input  placeholder="Search Record Here" value={searchData} onchange={searchRecordOnchange} ></lightning-input>
+                    </div>
+            </div>
+            <div class="slds-col slds-size_2-of-12 ">
+                    <div class="slds-card slds-p-around_small">
+                        <lightning-combobox  if:false={boolValChild}
+                             name="SelectFields"
+                             onchange={handleCheckBoxClickFiled} 
+                             options={arrayDuplicateList} 
+                             placeholder="Select Field"
+                             >
+                        </lightning-combobox >
+                    </div>
+            </div>
+            <div class="slds-col slds-size_2-of-12 ">
+                    <div class="slds-card slds-p-around_small">
+                        <br>
+                        <!-- <lightning-button label="Search Record" variant="brand" onclick={onclickButton}></lightning-button> -->
+                        <lightning-button if:true={boolValForButton} icon-name="utility:delete"  variant="destructive" label="Delete All"  onclick={onclickButton}></lightning-button>
+                    </div>
+            </div>
+            
+        </div>
+        <div class="slds-card">
+            <lightning-datatable
+                key-field="id"      
+                columns={columnsMap} 
+                data = {allRecordsOfSelectedObject}
+                show-row-number-column="true"
+                type="checkbox"
+                onrowaction={handleRowAction}
+                onrowselection={handleInterestSelect}
+                row-actions={actions}>
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>

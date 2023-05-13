@@ -1,0 +1,21 @@
+<template>
+    <lightning-card>
+        <lightning-layout title="Select Your Account" >
+            <lightning-layout-item padding="around-small" size="10" title="Select Your Account">
+                <div >
+                    <lightning-combobox 
+                     name="ObjectList"
+                     onchange={onObjectChange} 
+                     options={objectList} 
+                     placeholder="Select Object">
+                     
+                    </lightning-combobox> 
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="2">
+                <c-objects-create-button object-api-name={objectName}></c-objects-create-button>
+            </lightning-layout-item>
+        </lightning-layout>     
+    </lightning-card><br>
+    <c-lwc-sobject-field-list object-name-child={objectName} lst-fields12={filedList} bool-val-second={boolValue}></c-lwc-sobject-field-list>
+</template>

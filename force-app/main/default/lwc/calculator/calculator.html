@@ -1,0 +1,27 @@
+<template>
+    <lightning-layout>
+        <lightning-layout-item> 
+        </lightning-layout-item>
+        <lightning-layout-item class="slds-p-around_medium">
+            <lightning-card title="Calculator" icon-name="standard:records">
+                <div style="border: 1px solid black; border-radius: 10px;background-color: aqua;">
+                    <div>
+                         <lightning-input value={calcExpression}   name="txtExpression"  readonly></lightning-input>
+                    </div>
+                    <div>
+                        <lightning-input value={showResult}  name="txtResult" readonly class="slds-te"> </lightning-input>
+                    </div>
+                </div>
+            </lightning-card>
+            <lightning-card>
+                <table >
+                    <tr><td><lightning-button onclick={handleClick} label="1" ></lightning-button></td><td><lightning-button onclick={handleClick} label="2" ></lightning-button></td><td><lightning-button onclick={handleClick} label="3" ></lightning-button></td><td><lightning-button onclick={handleClick} label="+" ></lightning-button></td></tr>
+                    <tr><td><lightning-button onclick={handleClick} label="4" ></lightning-button></td><td><lightning-button onclick={handleClick} label="5" ></lightning-button></td><td><lightning-button onclick={handleClick} label="6" ></lightning-button></td><td><lightning-button onclick={handleClick} label="-" ></lightning-button></td></tr>
+                    <tr><td><lightning-button onclick={handleClick} label="7" ></lightning-button></td><td><lightning-button onclick={handleClick} label="8" ></lightning-button></td><td><lightning-button onclick={handleClick} label="9" ></lightning-button></td><td><lightning-button onclick={handleClick} label="*" ></lightning-button></td></tr>
+                    <tr><td><lightning-button onclick={handleClick} label="C" ></lightning-button></td><td><lightning-button onclick={handleClick} label="0" ></lightning-button></td><td><lightning-button onclick={handleClick} label="=" ></lightning-button></td><td><lightning-button onclick={handleClick} label="/" ></lightning-button></td></tr>
+                </table>
+            </lightning-card>
+        </lightning-layout-item>
+        
+</lightning-layout>
+</template>

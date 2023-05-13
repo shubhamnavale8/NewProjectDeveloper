@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="HelloWorld" icon-name="custom:custom14">
+      <div class="slds-m-around_medium">
+        <p>Hello, {greeting}!</p>
+        <lightning-input label="Name" value={greeting} onchange={changeHandler}></lightning-input>
+        <div class="slds-p-around_large">
+          <button class="slds-button">Button</button>
+      <button class="slds-button slds-button_neutral">Neutral Button</button>
+      <button class="slds-button slds-button_brand">Brand Button</button>
+      <button class="slds-button slds-button_outline-brand">Outline Brand Button</button>
+      <button class="slds-button slds-button_destructive">Destructive Button</button>
+      <button class="slds-button slds-button_text-destructive">Text Destructive Button</button>
+      <button class="slds-button slds-button_success">Success Button</button>
+      </div>
+      </div>
+      <div class="slds-grid slds-p-around_small">
+        <div  class="slds-col" > <div><img style="height: 100px ; width: 300px;" src="https://www.shutterstock.com/image-photo/surreal-image-african-elephant-wearing-260nw-1365289022.jpg" alt=""></div></div>
+      </div>
+      <div class="slds-align_absolute-center " style="font-size: 2rem; font-weight: 100;" onclick={checkTime}>
+        <H1 >{timeLive}</H1>
+      </div>
+    </lightning-card>
+  </template>

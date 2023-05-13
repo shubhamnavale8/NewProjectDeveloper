@@ -1,0 +1,19 @@
+<template>
+    <lightning-layout>
+        <lightning-layout-item padding="around-small" size="2">
+            <lightning-card title="Account Records" icon-name="standard:account">
+                <lightning-combobox options={picklistValues} value={valuess} onchange={forChange}></lightning-combobox>
+                <br>
+                <template for:each={accountList.data} for:item="actObj" for:index="index">
+                    <div key={actObj.Id} class="slds-p-horizontal_small" style="font-size: medium; " >  
+                        <div onclick={handleClick} data-accountid={actObj.Id}>{actObj.Name}</div>
+                    </div>
+                </template>
+            </lightning-card>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="10" >
+            <c-for-contact account-id={accountidfrmparent} ></c-for-contact> <br>
+        </lightning-layout-item>
+        
+</lightning-layout>
+</template>

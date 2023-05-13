@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Search The Account By Name" icon-name="standard:account" >
+        <div class="slds-p-around_small">
+            <lightning-input label="Account Name" value={accountName} onchange={forChange} ></lightning-input><br>
+            <lightning-button label="Search" variant="brand" onclick={forClick}></lightning-button>
+        </div>
+    </lightning-card>
+    <lightning-card>
+        <lightning-datatable if:true={accountList.data}
+            key-field="id"
+            show-row-number-column="Sr.No"
+            hide-checkbox-column
+            data={accountList.data}
+            columns={columns}>
+        </lightning-datatable>
+    </lightning-card>
+</template>

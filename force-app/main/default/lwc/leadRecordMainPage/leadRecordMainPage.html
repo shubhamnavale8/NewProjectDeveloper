@@ -1,0 +1,41 @@
+<template>
+        <lightning-card title="Lead Details" icon-name="standard:lead">
+          <template if:true={lead.data}>
+            <div class="slds-grid slds-wrap">
+              <div class="slds-col  slds-p-around_small"> 
+                <lightning-record-form object-api-name="Lead" columns="2" record-id={recordId} fields={fieldList2} onsuccess={LeadUpdate1}></lightning-record-form>
+              </div>
+              <!-- <div class="slds-col slds-size_1-of-2">
+                <br>
+                <lightning-record-form object-api-name="Lead" record-id={recordId} fields={fieldList2} onsuccess={LeadUpdate1}></lightning-record-form>
+              </div> -->
+            </div>
+        </template >
+    </lightning-card> 
+    <div class="slds-card">
+      <div style="display: flex; flex-direction: column;">
+        <div class="slds-m-horizontal_medium slds-m-vertical_small">       
+          <lightning-input label="Search Interests" type="search" onchange={handleSearchChange} ></lightning-input>
+        </div>
+      </div>
+      <lightning-card title="Interests" icon-name="custom:custom88">
+        <lightning-datatable
+            data={interests12}
+            columns={columns}
+            key-field="Id"
+            onrowselection={handleInterestSelect} >
+        </lightning-datatable>
+        <div if:true={casesSpinner} class="slds-spinner_inline spinner-padding">
+          <lightning-spinner variant="brand" 
+                             alternative-text="Loading Cases"     
+                             size="medium">
+          </lightning-spinner>
+      </div>
+      </lightning-card>
+    </div>  
+    <lightning-card>
+        <div align="right" class="slds-p-right_medium">
+            <button class="slds-button slds-button_brand " onclick={handleSubmit}>Submit</button>
+        </div>
+    </lightning-card>          
+</template>

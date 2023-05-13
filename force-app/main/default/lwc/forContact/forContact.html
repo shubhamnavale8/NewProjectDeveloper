@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Contact Records" icon-name="standard:contact" padding="around-small" >
+        <lightning-datatable if:true={contacts.data}
+            key-field="id"
+            show-row-number-column="Sr.No"
+            hide-checkbox-column
+            data={contacts.data}
+            columns={columns}>
+        </lightning-datatable>
+    </lightning-card>   
+    <lightning-card padding="around-small">
+        <c-oppertunity  account-ids={accountId} ></c-oppertunity>
+    </lightning-card>
+</template>

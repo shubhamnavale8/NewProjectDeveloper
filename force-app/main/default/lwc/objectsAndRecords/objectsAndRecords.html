@@ -1,0 +1,38 @@
+<template>
+    <lightning-card>
+        <lightning-layout title="Select Your Account" >
+            <lightning-layout-item padding="around-small" size="10" title="Select Your Account">
+                <div >
+                    <lightning-combobox  
+                     name="ObjectList"
+                     onchange={onObjectChange} 
+                     options={objectList} 
+                     placeholder="Select Object">
+                    </lightning-combobox> 
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="2">
+                <c-objects-create-button object-api-name={objectName}></c-objects-create-button>
+            </lightning-layout-item>
+        </lightning-layout>     
+    </lightning-card><br>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_2-of-12  slds-scrollable_y " style="height:30rem;">
+            <lightning-card >
+                <div class="slds-card">
+                    <lightning-checkbox-group class="slds-m-left_large"
+                        name="SelectFields"  
+                        label="Select Fields"
+                        options={lstFields}
+                         value = {lstFields}
+                         onchange={handleCheckBoxClick}>
+                    </lightning-checkbox-group>
+                </div>
+            </lightning-card>
+        </div>
+        <div class="slds-col slds-size_10-of-12  slds-scrollable_y" style="height:30rem;" >
+            <c-objects-create-field  object-name-one={objectName} lst-fields1={lstFields} all-records-of-selected-object1={allRecordsOfSelectedObject} columns-map={columnsMap} lab={lab} val={val} array-to-send1={arrayToSend} ></c-objects-create-field>
+        </div>
+         </div>
+    
+</template>
