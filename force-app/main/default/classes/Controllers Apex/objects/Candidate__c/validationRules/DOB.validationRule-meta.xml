@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DOB</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(((TODAY()-Date_of_Birth__c  )/365 )&lt;18, true, false)</errorConditionFormula>
+    <errorDisplayField>Date_of_Birth__c</errorDisplayField>
+    <errorMessage>Candidate age should be greater than 18.</errorMessage>
+</ValidationRule>

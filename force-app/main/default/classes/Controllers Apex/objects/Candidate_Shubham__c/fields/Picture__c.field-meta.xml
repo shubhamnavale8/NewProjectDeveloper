@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Picture__c</fullName>
+    <externalId>false</externalId>
+    <formula>IMAGE(&quot;https://th.bing.com/th/id/R.1a06d512a0b666a7cc382395730fd6e0?rik=Y5AroR9oYiCeMg&amp;pid=ImgRaw&amp;r=0&quot;,&quot;Not found&quot; )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Picture</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

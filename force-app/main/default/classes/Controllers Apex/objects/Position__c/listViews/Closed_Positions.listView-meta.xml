@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Closed_Positions</fullName>
+    <columns>NAME</columns>
+    <columns>Status__c</columns>
+    <columns>Job_Level__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Closed - Filled,Closed - Not Approved,Closed - Canceled</value>
+    </filters>
+    <label>Closed Positions</label>
+</ListView>

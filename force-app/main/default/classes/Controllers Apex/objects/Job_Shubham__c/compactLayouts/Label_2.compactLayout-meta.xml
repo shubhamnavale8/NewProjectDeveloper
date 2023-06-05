@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Label_2</fullName>
+    <fields>Manager__c</fields>
+    <fields>OwnerId</fields>
+    <fields>Salary_offered__c</fields>
+    <fields>Total_Applicants__c</fields>
+    <fields>Total_position__c</fields>
+    <fields>Qualification_required__c</fields>
+    <label>Label_2</label>
+</CompactLayout>

@@ -30,6 +30,5 @@ public class AsyncAssignmentFirst {
             else{
                 //AsyncAssignmentFirst.userAndAccountMethod();
             }  
-    }
-    
+    }  
 }

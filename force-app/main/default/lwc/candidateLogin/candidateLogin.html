@@ -1,0 +1,104 @@
+<template>
+    <div if:true={boolValLogin} align="center">
+        <br><br>
+    <div  class="slds-p-around_large "  style=" border-radius: 20px; width: 450px; background-image: url('https://i.pinimg.com/736x/cb/fd/12/cbfd12a5da707114c934185f6b28757a--samsung-galaxy-cases-iphone-cases.jpg');" align="left">
+        <div align="center"><p style="font-size: xx-large; font-weight: bold;">Login</p></div>
+        <div style="padding: 10px;">
+            <p id="error" style="color: red;" >{errorMessage}</p><br>
+            <lightning-input label="Username" onchange={onChangeUsername}></lightning-input>
+            <lightning-input  label="Password"  type="password" onchange={onChangePassword} ></lightning-input><br>
+            <div align="center">
+            <lightning-button class="slds-p-right_x-large" label="Login" variant="brand" onclick={onLoginClick}></lightning-button>
+            <lightning-button label="Signup"
+         name="Signup" 
+         variant="neutral"
+         onclick={onSignupclick}>
+        </lightning-button>
+        <br ><br>
+        <a onclick={resetPass}>Forgot Password</a>
+    </div>
+        </div><br>
+    
+</div>
+</div>
+
+<!-- //////////////////////////////////////////Reset Password///////////////////////////////////////////////////////////////////////// -->
+<div if:true={boolValForget} align="center">
+    <br><br>
+<div  class="slds-p-around_large "  style=" border-radius: 20px; width: 450px; background-image: url('https://i.pinimg.com/736x/cb/fd/12/cbfd12a5da707114c934185f6b28757a--samsung-galaxy-cases-iphone-cases.jpg');" align="left">
+    <div align="center"><p style="font-size: xx-large; font-weight: bold;">Reset Password</p></div>
+    <div style="padding: 10px;">
+        <p  style="color: red;" >{errorMessageOtp}</p><br>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_8-of-12  ">
+        <lightning-input label="Email" onchange={verifyEmail} value={resetEmail} required="Email of your account"></lightning-input>
+                </div>
+                <div class="slds-col slds-size_4-of-12  ">
+                    <br>
+        <lightning-button class="slds-p-right_x-large " label="Send OTP" variant="brand" onclick={onSendOTPClick}></lightning-button>
+                </div></div>
+        <lightning-input  label="OTP" value={oneTimePass} type="password" onchange={verifyOtp} required="Please provide OTP"></lightning-input><br>
+        <div align="center">
+        
+        <lightning-button label="Verify"
+     name="Verify" 
+     variant="neutral"
+     onclick={onVerifyButtonclick}>
+    </lightning-button>
+    
+</div>
+    </div><br>
+
+</div>
+</div>
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- //////////////////////////////////////////New Password///////////////////////////////////////////////////////////////////////// -->
+<div if:true={newPassBool} align="center">
+    <br><br>
+<div  class="slds-p-around_large "  style=" border-radius: 20px; width: 450px; background-image: url('https://i.pinimg.com/736x/cb/fd/12/cbfd12a5da707114c934185f6b28757a--samsung-galaxy-cases-iphone-cases.jpg');" align="left">
+    <div align="center"><p style="font-size: xx-large; font-weight: bold;">New Password</p></div>
+    <div style="padding: 10px;">
+        <p style="color: red;" >{errorMessageNewPassword}</p><br>
+        <lightning-input label="New Password" onchange={onNewPassword} required=""></lightning-input>
+        <lightning-input  label="Confirm Password"  type="password" onchange={onNewCofirmPassword} required=""></lightning-input><br>
+        <div align="center">
+        <lightning-button class="slds-p-right_x-large" label="Submit" variant="brand" onclick={onNewPasswordSubmit}></lightning-button>
+        
+</div>
+    </div><br>
+
+</div>
+</div>
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <lightning-card if:true={boolValSignup}>
+        <div><p style="font-size: x-large; font-weight: bold; padding-left: 10px;" >Personal Information</p></div>
+        <lightning-card>
+            <lightning-record-form object-api-name="Candidate__c" columns="2" record-id={candidateId} fields={fieldList2} onsuccess={candidateUpdate1}></lightning-record-form>
+        </lightning-card>
+        <br>
+            <div style="background-color: rgb(174, 253, 201);" class="slds-card">
+                <div><p style="font-size: x-large; font-weight: bold; padding-left: 10px;">Apply For Job Here....</p></div>
+                <lightning-datatable
+                key-field="id"
+                data={positionrecord.data}
+                columns={columns}
+                onrowselection={handleInterestSelect} >
+                </lightning-datatable>
+        </div>
+        <div if:true={showButton} align="center">
+            <lightning-button class="slds-p-around_large"   label="Apply" variant="brand" onclick={onApply}></lightning-button>
+        </div>
+        
+    </lightning-card>
+   
+        <div if:true={boolValSignup} style="background-color: rgb(255, 186, 146);" class="slds-card">
+            <div><p style="font-size: x-large; font-weight: bold; padding-left: 10px;">You Already Applied For This Job</p></div>
+            <lightning-datatable
+            key-field="id"
+            data={positionrecord12.data}
+            columns={columns}
+            hide-checkbox-column >
+            </lightning-datatable>
+    </div>
+   
+</template>

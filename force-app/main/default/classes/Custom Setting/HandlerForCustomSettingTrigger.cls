@@ -12,5 +12,5 @@ public class HandlerForCustomSettingTrigger {
                 bikeObject.Id.addError('From Trigger Custom Setting Error');
             }
         }
-    }
+    }     
 }

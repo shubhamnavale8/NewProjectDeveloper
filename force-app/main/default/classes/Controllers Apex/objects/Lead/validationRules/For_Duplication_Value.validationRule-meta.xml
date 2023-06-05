@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>For_Duplication_Value</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( isDuplicate__c == true, true, false)</errorConditionFormula>
+    <errorMessage>Value is Duplicate In Lead , You Can Not Insert Duplicate Lead in Day, Please Check LastName And Email Or Try This Lead Tommarow</errorMessage>
+</ValidationRule>

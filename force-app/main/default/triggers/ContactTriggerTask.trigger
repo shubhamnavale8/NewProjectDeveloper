@@ -1,10 +1,12 @@
 trigger ContactTriggerTask on Contact (before insert,before update,before delete,after insert,after update,after delete,after undelete) {
     if(Trigger.isBefore && Trigger.isInsert ){
-        
-        HandlerContactTriggerTask.forCheckPhoneEmailMethod(Trigger.new);
+        HandlerContactTriggerTask.forCheckPhoneEmailMethod(Trigger.new);    
+    }
+    if(Trigger.isAfter && Trigger.isInsert ){
+        HandlerContactTriggerTask.createContactTaskAssignment(Trigger.new);     
     }
     if(Trigger.isBefore && Trigger.isUpdate ){
-        HandlerContactTriggerTask.forCheckPhoneEmailMethod(Trigger.new);
+        HandlerContactTriggerTask.forCheckPhoneEmailMethod(Trigger.new);  
     }
     if(Trigger.isAfter && Trigger.isDelete ){
         HandlerContactTriggerTask.forMethodForDeleteUndelete(Trigger.old);

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Qualification_required</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISPICKVAL( Qualification_required__c , &quot;&quot;)</errorConditionFormula>
+    <errorDisplayField>Qualification_required__c</errorDisplayField>
+    <errorMessage>Have to select minimum one value</errorMessage>
+</ValidationRule>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequiredSkill</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND (
+ Apex__c  &lt;&gt; true,
+ C__c &lt;&gt; true,
+ Java__c &lt;&gt; true,
+ Javascript__c &lt;&gt; true,
+ Excel__c &lt;&gt; true,
+ Powerpoint__c &lt;&gt; true,
+ Team_Building__c &lt;&gt; true,
+ Word__c &lt;&gt; true
+)</errorConditionFormula>
+    <errorMessage>Minimum 1 skill required</errorMessage>
+</ValidationRule>

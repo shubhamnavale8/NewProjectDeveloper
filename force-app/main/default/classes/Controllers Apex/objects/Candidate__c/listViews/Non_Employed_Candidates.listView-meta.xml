@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Non_Employed_Candidates</fullName>
+    <columns>NAME</columns>
+    <columns>Candidate_Name__c</columns>
+    <columns>Currently_Employed__c</columns>
+    <columns>Current_Employer__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Currently_Employed__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>Non Employed Candidates</label>
+</ListView>

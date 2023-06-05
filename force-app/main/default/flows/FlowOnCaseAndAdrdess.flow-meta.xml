@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <actionCalls>
+        <name>MailSendingAction</name>
+        <label>MailSendingAction</label>
+        <locationX>478</locationX>
+        <locationY>926</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>replacedProductBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>getCase.SuppliedEmail</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>replacedProductSubject</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>MailSendingAction_0</name>
+        <label>MailSendingAction</label>
+        <locationX>742</locationX>
+        <locationY>926</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>replacedProductAndGiftBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>getCase.SuppliedEmail</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Regrading Replaced Your Old Product And Gift Cards</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>MailSendingAction_0_0</name>
+        <label>MailSendingAction</label>
+        <locationX>1006</locationX>
+        <locationY>926</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>refundRequestBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>getCase.SuppliedEmail</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Regrading Refund Of Your Order</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <choices>
+        <name>choiceForNewRecord</name>
+        <choiceText>Create New Address</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>false</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>createNewAddress</name>
+        <choiceText>&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Create New Record&lt;/span&gt;</choiceText>
+        <dataType>Boolean</dataType>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </choices>
+    <choices>
+        <name>NewAddressChoiceValue</name>
+        <choiceText>Create New Address</choiceText>
+        <dataType>Boolean</dataType>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Send_Refund_Back</name>
+        <choiceText>Send Refund Back</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Send Refund Back</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Send_replaced_Product</name>
+        <choiceText>Send Replaced Product</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Send replaced Product</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Send_Replaced_Product_And_Gift_Card</name>
+        <choiceText>Send Replaced Product And Gift Card</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Send Replaced Product And Gift Card</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <name>DecisionOnNewAddress</name>
+        <label>DecisionOnNewAddress</label>
+        <locationX>537</locationX>
+        <locationY>606</locationY>
+        <defaultConnector>
+            <targetReference>Select_Options</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Old Address</defaultConnectorLabel>
+        <rules>
+            <name>New_Address</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>choiceForNewRecord</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_New_Address</targetReference>
+            </connector>
+            <label>New Address</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>SelectionOfProductOption</name>
+        <label>SelectionOfProductOption</label>
+        <locationX>874</locationX>
+        <locationY>806</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Replaced_Product</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Send_replaced_Product</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>MailSendingAction</targetReference>
+            </connector>
+            <label>Replaced Product</label>
+        </rules>
+        <rules>
+            <name>Replaced_Product_And_Gift</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Send_Replaced_Product_And_Gift_Card</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>MailSendingAction_0</targetReference>
+            </connector>
+            <label>Replaced Product And Gift</label>
+        </rules>
+        <rules>
+            <name>Refund_Back</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Send_Refund_Back</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>MailSendingAction_0_0</targetReference>
+            </connector>
+            <label>Refund Back</label>
+        </rules>
+    </decisions>
+    <description>QA Tasks</description>
+    <dynamicChoiceSets>
+        <name>allAddress</name>
+        <collectionReference>getAddress</collectionReference>
+        <dataType>String</dataType>
+        <displayField>Full_Address__c</displayField>
+        <object>Contact_Adress__c</object>
+        <valueField>Full_Address__c</valueField>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>countryPickChoiceSet</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Country__c</picklistField>
+        <picklistObject>Contact_Adress__c</picklistObject>
+        <sortOrder>Asc</sortOrder>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>pickValueForCountry</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Country__c</picklistField>
+        <picklistObject>Contact_Adress__c</picklistObject>
+        <sortOrder>Asc</sortOrder>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>pickValueOfState</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>State__c</picklistField>
+        <picklistObject>Contact_Adress__c</picklistObject>
+        <sortOrder>Asc</sortOrder>
+    </dynamicChoiceSets>
+    <interviewLabel>FlowOnCaseAndAdrdess {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>FlowOnCaseAndAdrdess</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>CreateRecordTrigger</name>
+        <label>CreateRecordTrigger</label>
+        <locationX>69</locationX>
+        <locationY>910</locationY>
+        <connector>
+            <targetReference>ScreenRecordCreated</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Address_Line_2__c</field>
+            <value>
+                <elementReference>Address_Line_2</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Country__c</field>
+            <value>
+                <elementReference>newAddressCreateingScreen.topValue</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>Address_Line_1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>State__c</field>
+            <value>
+                <elementReference>newAddressCreateingScreen.middleValue</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ZipCode__c</field>
+            <value>
+                <elementReference>Zip_Code</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact_Adress__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>getAddress</name>
+        <label>getAddress</label>
+        <locationX>544</locationX>
+        <locationY>326</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Cases</targetReference>
+        </connector>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Contact_Adress__c</object>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>getCase</name>
+        <label>getCase</label>
+        <locationX>544</locationX>
+        <locationY>206</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>getAddress</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <screens>
+        <name>Cases</name>
+        <label>Cases</label>
+        <locationX>544</locationX>
+        <locationY>446</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>DecisionOnNewAddress</targetReference>
+        </connector>
+        <fields>
+            <name>Address</name>
+            <choiceReferences>choiceForNewRecord</choiceReferences>
+            <choiceReferences>allAddress</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Address</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Create_New_Address</name>
+        <label>Create New Address</label>
+        <locationX>214</locationX>
+        <locationY>686</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>CreateRecordTrigger</targetReference>
+        </connector>
+        <fields>
+            <name>Address_Line_1</name>
+            <dataType>String</dataType>
+            <fieldText>Address Line 1</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Address_Line_2</name>
+            <dataType>String</dataType>
+            <fieldText>Address Line 2</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>newAddressCreateingScreen</name>
+            <extensionName>flowruntime:dependentPicklists</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>dependencyWrapperApiName</name>
+                <value>
+                    <stringValue>Contact_Adress__c</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>topPicklistApiName</name>
+                <value>
+                    <stringValue>Country__c</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>middlePicklistApiName</name>
+                <value>
+                    <stringValue>State__c</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>topLabel</name>
+                <value>
+                    <stringValue>Country</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>middleLabel</name>
+                <value>
+                    <stringValue>State</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>topRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>middleRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
+            <name>Zip_Code</name>
+            <dataType>Number</dataType>
+            <fieldText>Zip Code</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+            <scale>0</scale>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>ScreenRecordCreated</name>
+        <label>ScreenRecordCreated</label>
+        <locationX>60</locationX>
+        <locationY>363</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>getCase</targetReference>
+        </connector>
+        <fields>
+            <name>displayCreatedRecordMessage</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 18px; color: rgb(46, 153, 0);&quot;&gt;&lt;em&gt;New Address Created Successfully !&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 12px;&quot;&gt;{!Address_Line_1}, {!Address_Line_2}, {!newAddressCreateingScreen.middleValue}, &lt;/strong&gt;&lt;strong style=&quot;font-size: 12px; background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!newAddressCreateingScreen.topValue}, &lt;/strong&gt;&lt;strong style=&quot;font-size: 12px;&quot;&gt;{!displayZipCodeFormat}&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Select_Options</name>
+        <label>Select Options</label>
+        <locationX>874</locationX>
+        <locationY>686</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>SelectionOfProductOption</targetReference>
+        </connector>
+        <fields>
+            <name>Select_Your_Choice</name>
+            <choiceReferences>Send_replaced_Product</choiceReferences>
+            <choiceReferences>Send_Replaced_Product_And_Gift_Card</choiceReferences>
+            <choiceReferences>Send_Refund_Back</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Select Your Choice</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Refund_Amount</name>
+            <dataType>Number</dataType>
+            <defaultValue>
+                <numberValue>0.0</numberValue>
+            </defaultValue>
+            <fieldText>Refund Amount</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <scale>0</scale>
+            <validationRule>
+                <errorMessage>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(255, 0, 0);&quot;&gt;&lt;em&gt;Amount Should Be Less Than 1000&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</errorMessage>
+                <formulaExpression>{!Refund_Amount}&lt;1000</formulaExpression>
+            </validationRule>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Send_Refund_Back</leftValueReference>
+                    <operator>WasSelected</operator>
+                    <rightValue>
+                        <booleanValue>true</booleanValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>418</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>getCase</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>refundRequestBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hi {!getCase.SuppliedName},
+
+I&apos;ve processed your refund, and you should expect to see the amount appear in your bank account in the next couple of business days.
+I&apos;m sorry to hear that you didn&apos;t love your new product. I completely understand that it isn&apos;t for everyone.
+If you&apos;re still searching for the right choice for you, let me know. I&apos;d be happy to talk you through some of our other options and see if any of them feel like a good fit. Thank you for your time and for giving us a try.
+I hope to connect with you again soon.
+Best,
+
+Shubham Navale
+7972122788, 8308775266.</text>
+    </textTemplates>
+    <textTemplates>
+        <name>replacedProductAndGiftBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hii {!getCase.SuppliedName} ,
+
+Thanks for letting us know about this faulty product. We&apos;ll do our best to assess the problem and determine exactly what went wrong with your product.
+In the meantime, please accept this replacement product  that I&apos;ve personally assessed for performance.
+We&apos;d like to offer our sincerest apologies for any inconvenience this may have caused. We hope you continue to enjoy using our product, and we are happy to answer any questions or concerns you may have.
+Please feel welcome to contact our support team at +917972122788 or reply to this message, and we&apos;d be more than happy to help.
+
+Your replaced product is delivery on following Address
+{!Address_Line_1}, {!Address_Line_2}, {!newAddressCreateingScreen.middleValue}, {!newAddressCreateingScreen.topValue}, {!Zip_Code}
+
+Your Gift Card Of Ruppees  
+{!Refund_Amount}
+
+Thanks You,</text>
+    </textTemplates>
+    <textTemplates>
+        <name>replacedProductBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hii {!getCase.SuppliedName} ,
+
+Thanks for letting us know about this faulty product. We&apos;ll do our best to assess the problem and determine exactly what went wrong with your product.
+In the meantime, please accept this replacement product  that I&apos;ve personally assessed for performance.
+We&apos;d like to offer our sincerest apologies for any inconvenience this may have caused. We hope you continue to enjoy using our product, and we are happy to answer any questions or concerns you may have.
+Please feel welcome to contact our support team at +917972122788 or reply to this message, and we&apos;d be more than happy to help.
+
+Your replaced product is delivery on following Address
+{!Address_Line_1}, {!Address_Line_2}, {!newAddressCreateingScreen.middleValue}, {!newAddressCreateingScreen.topValue}, {!Zip_Code}
+
+Thanks You,</text>
+    </textTemplates>
+    <textTemplates>
+        <name>replacedProductSubject</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;strong&gt;&lt;em&gt;Regrading Your  Old Product Replacement&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>tempRefund</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;strong&gt;&lt;em&gt;Hii {!getCase.SuppliedName}&lt;/em&gt;&lt;/strong&gt; ,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Thanks for letting us know about this faulty product. We&apos;ll do our best to assess the problem and determine exactly what went wrong with your product.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;In the meantime, please accept this replacement product  that I&apos;ve personally assessed for performance.&lt;/p&gt;&lt;p&gt;We&apos;d like to offer our sincerest apologies for any inconvenience this may have caused. We hope you continue to enjoy using our product, and we are happy to answer any questions or concerns you may have.&lt;/p&gt;&lt;p&gt;Please feel welcome to contact our support team at +917972122788 or reply to this message, and we&apos;d be more than happy to help.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Your replaced product is delivery on following Address&lt;/p&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;{!Address_Line_1}, {!Address_Line_2}, {!newAddressCreateingScreen.middleValue}, {!newAddressCreateingScreen.topValue}, {!Zip_Code}&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Thanks You,&lt;/p&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>displayZipCodeFormat</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <elementReference>Zip_Code</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

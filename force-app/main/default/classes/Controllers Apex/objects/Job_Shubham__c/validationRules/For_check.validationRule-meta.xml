@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>For_check</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( $User.Username  = &quot;johnwick.enzigma@gmail.com&quot; ,  Check_Box__c = true, false)</errorConditionFormula>
+    <errorDisplayField>Check_Box__c</errorDisplayField>
+    <errorMessage>John you cant select this field</errorMessage>
+</ValidationRule>

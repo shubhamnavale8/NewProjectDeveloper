@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Skill_required</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(
+   PICKLISTCOUNT( Skills_required__c ) &lt; 1,
+   PICKLISTCOUNT( Skills_required__c ) &gt; 3
+)</errorConditionFormula>
+    <errorDisplayField>Skills_required__c</errorDisplayField>
+    <errorMessage>Skills in between 1 and 3 only</errorMessage>
+</ValidationRule>
